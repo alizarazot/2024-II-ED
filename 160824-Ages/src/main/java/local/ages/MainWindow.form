@@ -58,6 +58,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consult ages"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultAgesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
