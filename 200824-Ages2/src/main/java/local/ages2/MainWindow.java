@@ -111,11 +111,11 @@ public class MainWindow extends javax.swing.JFrame {
         while (true) {
             String rawAge = showPromptAgeDialog();
 
-            try {
+            if (rawAge.chars().allMatch(Character::isDigit)) {
                 return Integer.parseInt(rawAge);
-            } catch (NumberFormatException __) {
-                JOptionPane.showMessageDialog(rootPane, "Only numbers are accepted!");
             }
+
+            JOptionPane.showMessageDialog(rootPane, "Only integers are accepted!");
         }
     }
 
