@@ -10,11 +10,15 @@ package local.restaurant;
  */
 public class AnalizeInformationWindow extends javax.swing.JFrame {
 
+    Menu menu;
+
     /**
      * Creates new form AnalizeInformationWindow
      */
-    public AnalizeInformationWindow() {
+    public AnalizeInformationWindow(Menu menu) {
         initComponents();
+        this.menu = menu;
+        comboBoxPlate.setModel(new javax.swing.DefaultComboBoxModel<>(menu.plates));
     }
 
     /**
@@ -27,16 +31,20 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnTotalSalesPlate = new javax.swing.JButton();
+        comboBoxPlate = new javax.swing.JComboBox<>();
+        btnCalculateStats = new javax.swing.JButton();
+        lblStats = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Analizar información");
 
-        btnTotalSalesPlate.setText("Total de ventas para un plato en la semana");
-        btnTotalSalesPlate.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxPlate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
+
+        btnCalculateStats.setText("Calcular estadísticas");
+        btnCalculateStats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTotalSalesPlateActionPerformed(evt);
+                btnCalculateStatsActionPerformed(evt);
             }
         });
 
@@ -45,14 +53,18 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStats)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(127, 127, 127)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(btnTotalSalesPlate)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
+                        .addComponent(comboBoxPlate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnCalculateStats)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,21 +72,49 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(btnTotalSalesPlate)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxPlate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCalculateStats))
+                .addGap(18, 18, 18)
+                .addComponent(lblStats)
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTotalSalesPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalSalesPlateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTotalSalesPlateActionPerformed
+    private void btnCalculateStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateStatsActionPerformed
+        int plateID = comboBoxPlate.getSelectedIndex();
+        String plateName = menu.plates[plateID];
+
+        String text = String.format("""
+                                    Cantidad ventas en la semana para %s: %d
+                                    Día de la semana con más ventas para %s: %s
+                                    Día de la semana con menos ventas para %s: %s
+                                    
+                                    Día de la semana con más ventas: %s
+                                    Día de la semana con menos ventas: %s
+                                    Promedio de ventas por día: %.2f
+                                    Promedio de ventas en la semana: %.2f
+                                    Total de ventas en la semana: %d""",
+                plateName, menu.getTotalSalesPlateWeek(plateID),
+                plateName, Menu.DAYS[menu.getDayMoreSalesPlate(plateID)],
+                plateName, Menu.DAYS[menu.getDayLessSalesPlate(plateID)],
+                Menu.DAYS[menu.getDayMostSales()],
+                Menu.DAYS[menu.getDayLessSales()],
+                menu.getAverageSalesDay(),
+                menu.getAverageSalesPlate(),
+                menu.getTotalSales()
+        );
+
+        // Keep newlines.
+        lblStats.setText("<html>" + text.replaceAll("\n", "<br/>") + "</html>");
+    }//GEN-LAST:event_btnCalculateStatsActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(Menu menu) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -101,13 +141,15 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnalizeInformationWindow().setVisible(true);
+                new AnalizeInformationWindow(menu).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTotalSalesPlate;
+    private javax.swing.JButton btnCalculateStats;
+    private javax.swing.JComboBox<String> comboBoxPlate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblStats;
     // End of variables declaration//GEN-END:variables
 }

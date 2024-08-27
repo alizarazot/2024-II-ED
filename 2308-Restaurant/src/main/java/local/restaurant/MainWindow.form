@@ -51,7 +51,7 @@
                   <Group type="102" attributes="0">
                       <Component id="btnInsertData" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="39" max="32767" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAnalizeInformation" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btnCreateMenu" min="-2" max="-2" attributes="0"/>
@@ -76,7 +76,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnInsertData" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnalizeInformation" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="175" max="32767" attributes="0"/>
           </Group>
@@ -115,11 +115,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertDataActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btnAnalizeInformation">
       <Properties>
         <Property name="text" type="java.lang.String" value="Analizar informaci&#xf3;n"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnalizeInformationActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

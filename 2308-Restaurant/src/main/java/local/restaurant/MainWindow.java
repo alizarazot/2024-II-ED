@@ -33,7 +33,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnCreateMenu = new javax.swing.JButton();
         btnQueryMenu = new javax.swing.JButton();
         btnInsertData = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAnalizeInformation = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,8 +73,13 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Analizar información");
-        jButton4.setEnabled(false);
+        btnAnalizeInformation.setText("Analizar información");
+        btnAnalizeInformation.setEnabled(false);
+        btnAnalizeInformation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizeInformationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,7 +95,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnInsertData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addComponent(btnAnalizeInformation))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCreateMenu)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -109,7 +114,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsertData)
-                    .addComponent(jButton4))
+                    .addComponent(btnAnalizeInformation))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -130,7 +135,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnInsertDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertDataActionPerformed
         menu.insertData();
+        btnAnalizeInformation.setEnabled(true);
     }//GEN-LAST:event_btnInsertDataActionPerformed
+
+    private void btnAnalizeInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizeInformationActionPerformed
+        menu.showInformationFrame();
+    }//GEN-LAST:event_btnAnalizeInformationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,10 +178,10 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizeInformation;
     private javax.swing.JButton btnCreateMenu;
     private javax.swing.JButton btnInsertData;
     private javax.swing.JButton btnQueryMenu;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

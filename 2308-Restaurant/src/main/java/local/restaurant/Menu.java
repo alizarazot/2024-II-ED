@@ -43,6 +43,10 @@ public class Menu {
         }
     }
 
+    public void showInformationFrame() {
+        AnalizeInformationWindow.main(this);
+    }
+
     public int getTotalSalesPlateWeek(int plate) {
         int total = 0;
 
@@ -81,7 +85,7 @@ public class Menu {
         int total = 0;
 
         for (int plate = 0; plate < plates.length; plate++) {
-            total += plates[day][plate];
+            total += data[day][plate];
         }
 
         return total;
@@ -111,7 +115,7 @@ public class Menu {
         return worstDay;
     }
 
-    public int getAverageSalesDay() {
+    public float getAverageSalesDay() {
         int total = 0;
 
         for (int day = 0; day < Menu.DAYS.length; day++) {
@@ -119,5 +123,25 @@ public class Menu {
         }
 
         return total / Menu.DAYS.length;
+    }
+
+    public float getAverageSalesPlate() {
+        int total = 0;
+
+        for (int day = 0; day < Menu.DAYS.length; day++) {
+            total += getDaySales(day);
+        }
+
+        return total / plates.length;
+    }
+
+    public int getTotalSales() {
+        int total = 0;
+
+        for (int day = 0; day < Menu.DAYS.length; day++) {
+            total += getDaySales(day);
+        }
+
+        return total;
     }
 }
