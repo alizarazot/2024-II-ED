@@ -4,6 +4,8 @@
  */
 package local.restaurant2;
 
+import java.util.Arrays;
+
 /**
  *
  * @author SCIS2-24
@@ -14,11 +16,15 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form AnalizeInformationWindow
+     *
+     * @param menu
      */
     public AnalizeInformationWindow(Menu menu) {
         initComponents();
         this.menu = menu;
-        comboBoxPlate.setModel(new javax.swing.DefaultComboBoxModel<>(menu.plates));
+        comboBoxPlate.setModel(
+                new javax.swing.DefaultComboBoxModel<>(
+                        Arrays.stream(menu.plates).map(Plate::getName).toArray(String[]::new)));
     }
 
     /**
@@ -85,7 +91,7 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
 
     private void btnCalculateStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateStatsActionPerformed
         int plateID = comboBoxPlate.getSelectedIndex();
-        String plateName = menu.plates[plateID];
+        String plateName = menu.plates[plateID].getName();
 
         String text = String.format("""
                                     Cantidad ventas en la semana para %s: %d

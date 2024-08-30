@@ -1,7 +1,7 @@
-
 package local.restaurant2;
 
 public class Plate {
+
     private int price;
     private String name;
 

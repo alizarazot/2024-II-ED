@@ -23,10 +23,10 @@ public class Menu {
 
             plate.setName(JOptionPane.showInputDialog("Insert a plate name:"));
             plate.setPrice(Integer.parseInt(
-                            JOptionPane.showInputDialog(
-                                    String.format("Insert the price of the plate %s:", plate.getName())
-                            )
-                    ));
+                    JOptionPane.showInputDialog(
+                            String.format("Insert the price of the plate %s:", plate.getName())
+                    )
+            ));
 
             plates[i] = plate;
         }
@@ -35,7 +35,7 @@ public class Menu {
     public void queryMenu() {
         String platesInfo = "";
         for (int i = 0; i < this.plates.length; i++) {
-            platesInfo += String.format("Plate [%d]: %s\n", i, plates[i]);
+            platesInfo += String.format("Plate %s: $%d\n", plates[i].getName(), plates[i].getPrice());
         }
         JOptionPane.showMessageDialog(null, platesInfo);
     }
@@ -46,7 +46,7 @@ public class Menu {
         for (int day = 0; day < Menu.DAYS.length; day++) {
             for (int plate = 0; plate < plates.length; plate++) {
                 data[day][plate] = Integer.parseInt(JOptionPane.showInputDialog(String.format(
-                        "Enter quantity of sales of plate %s for day %s:", plates[plate], Menu.DAYS[day])));
+                        "Enter quantity of sales of plate %s for day %s:", plates[plate].getName(), Menu.DAYS[day])));
             }
         }
     }
