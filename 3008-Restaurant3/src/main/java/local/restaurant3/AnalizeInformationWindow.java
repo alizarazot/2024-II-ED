@@ -34,7 +34,7 @@ public class AnalizeInformationWindow extends javax.swing.JFrame {
                                     Día de la semana con más ventas: %s
                                     Día de la semana con menos ventas: %s
                                     Promedio de ventas por día: %.2f
-                                    Promedio de ventas en la semana: %.2f
+                                    Promedio de ventas por plato: %.2f
                                     Total de ventas en la semana: %d""",
                 menu.getTotalSalesMoney(),
                 menu.getTotalCostProduction(),
